@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition with OTP Backup</title>
+    <style>
+        /* styles.css */
+        body{  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: rgb(175, 175, 240);
+}  
+
+h1{
+    color:white
+}
+.container {
+    text-align: center;
+    margin-top: 100px;
+    background-color: rgb(175, 175, 240);  
+}
+
+.next-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007BFF; /* Button color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.next-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+    </style>
+</head>
+<body>
+    <h1>Face Recognition Login</h1>
+
+    <video id="video" width="1350" height="450" autoplay></video>
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas><br>
+    <div class="input-box"> 
+        <button id="capture">Capture</button>
+    </div>
+    <br>
+    <div class="input-box">
+        <a href="dashboard.html" class="next-button">Login</a> 
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+
+        // Request access to the webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                console.error("Error accessing webcam: " + err);
+            });
+
+        document.getElementById('capture').addEventListener('click', () => {
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, 320, 240);
+
+            // Convert canvas image to base64 and send to server for face recognition
+            const imageData = canvas.toDataURL('image/png');
+            fetch('/recognize-face', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ image: imageData }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Face recognized, login successful!');
+                } else {
+                    alert('Face not recognized. Sending OTP...');
+                    fetch('/send-otp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ mobile: data.mobile }),
+                    });
+                }
+            })
+            .catch(err => console.error("Error during face recognition: " + err));
+        });
+    </script>
+</body>
+</html>

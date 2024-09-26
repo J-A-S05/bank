@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form | Dan Aleko</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>SECURE MONEY BANK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: larger;
+            color: black;
+            text-align: left;
+        }
+        
+        header {
+            padding: 1em;
+            text-align: left;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 'https://image-processor-storage.s3.us-west-2.amazonaws.com/images/40b728d6de76998d17ba7eb10f5c5f2c/palm-tree-leaf-shadow-  on-pink-background.jpg';
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .full-page {
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            padding-left: 50px;
+            padding-right: 30px;
+            padding-top: 50px;
+        }
+        
+        nav {
+            flex: 1;
+            text-align: right;
+        }
+        
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+        
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            font-family: sans-serif;
+        }
+        
+        nav ul li button {
+            font-size: 20px;
+            color: white;
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+        
+        nav ul li button:hover {
+            color: aqua;
+        }
+        
+        nav ul li a:hover {
+            color: aqua;
+        }
+        
+        .wrapper {
+            width: 420px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(9px);
+            color: white;
+            border-radius: 12px;
+            padding: 30px 40px;
+        }
+
+        .wrapper:hover {
+            transform: translateY(-5px);
+        }
+
+
+        @media only screen and (max-width: 600px) {
+ 
+            .wpforms-container.wpf-center {
+            max-width: unset !important;
+            width: auto !important;
+        }
+
+}
+        .wrapper h1 {
+            font-size: 36px;
+            text-align: left;
+        }
+        
+        .wrapper .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            cursor: pointer;
+        }
+        
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid black;
+            border-radius: 40px;
+            font-size: 16px;
+            color: olive;
+            padding: 20px 45px 20px 20px;
+        }
+        
+        .input-box input::placeholder {
+            color: white;
+        }
+        
+        .input-box i {
+            position: absolute;
+            right: 20px;
+            top: 30%;
+            transform: translate(-50%);
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .wrapper .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+        }
+        
+        .remember-forgot label input {
+            accent-color: green;
+            margin-right: 3px;
+        }
+        
+        .remember-forgot a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+        
+        .wrapper .btn {
+            width: 100%;
+            height: 45px;
+            background: whitesmoke;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: black;
+            font-weight: 600;
+        }
+        
+        .wrapper .register-link {
+            font-size: 14.5px;
+            text-align: center;
+            margin: 20px 0 15px;
+        }
+        
+        .register-link p a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link p a:hover {
+            text-decoration: underline;
+        }
+        
+        span {
+            color: #777;
+            font-size: 12px;
+            bottom: 68px;
+            position: absolute;
+        }
+        
+        #login {
+            left: 50px;
+        }
+        
+        #login input {
+            color: white;
+            font-size: 15;
+        }
+        
+        #register {
+            left: 450px;
+        }
+        
+        #register input {
+            color: white;
+            font-size: 15;
+        }
+    </style>
+</head>
+
+<body background="bg1.jpg">
+    <div class="logo-container">
+        <img src="logo.ico.png" alt="Banking Management System Logo" class="logo" style="width: 80px;height: 80px;">
+        <h1 style="font-size: 18px;"></h1>
+    </div><br><br><br>
+    <div class="full-page">
+        <div class="navbar">
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='#'>Home</a></li>
+                    <li><a href='#'>About Us</a></li>
+                    <li><a href='#'>Services</a></li>
+                    <li><a href='#'>Contact</a></li>
+                    <li><button class='loginbtn' onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Login</button</li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wrapper">
+        <form action="nextpage1.html" method="get">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" class="input-field" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember Me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <div class="input-box">
+                <input type="submit" value="Next" placeholder="Next">
+            </div>
+            <div>
+                    <div class="register-link">
+                        <p>Dont have an account? <a href="register.html" target="_self">Register</a></p>
+                    </div>
+            </div>        
+        </form>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById('login');
+        var y = document.getElementById('register');
+        var z = document.getElementById('btn');
+
+        function register() {
+            x.style.left = '-400px';
+            y.style.left = '50px';
+            z.style.left = '110px';
+        }
+
+        function login() {
+            x.style.left = '50px';
+            y.style.left = '450px';
+            z.style.left = '0px';
+        }
+    </script>
+    <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
